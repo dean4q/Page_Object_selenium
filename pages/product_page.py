@@ -9,13 +9,12 @@ from selenium.common.exceptions import NoAlertPresentException
 import math
 class ProductPage(BasePage):
     def solve_quiz_and_get_code(self):
-        WebDriverWait(self.browser, 10).until(EC.alert_is_present())
+
         alert = self.browser.switch_to.alert
         x = alert.text.split(" ")[2]
         answer = str(math.log(abs((12 * math.sin(float(x))))))
         alert.send_keys(answer)
         alert.accept()
-        time.sleep(10)
         try:
             alert = self.browser.switch_to.alert
             alert_text = alert.text
@@ -28,7 +27,18 @@ class ProductPage(BasePage):
     def add_product_to_basket(self):
         button_add_basket = self.browser.find_element(*AddToBasket.ADDTOBASKET)
         button_add_basket.click()
-        return ProductPage(browser=self.browser, url=self.browser.current_url)
 
-    # def should_be_answer(self):
-    #     assert self.is_element_present(*ProductPageLocators.LOGIN_LINK), "Login link is not presented"
+    def find_product_name(self):
+        name = self.browser.find_element(*AddToBasket.PRODUCT_NAME)
+        product_name = name.text
+        return product_name
+
+    def find_product_price(self):
+        price = self.browser.find_element(*AddToBasket.PRODUCT_PRICE)
+        product_price = price.text
+        return product_price
+
+    def check_equal_product_name(self):
+        name = self.browser.find_element(*AddToBasket.CHECK_NAME)
+        alert_name = name.text
+        return alert_name
