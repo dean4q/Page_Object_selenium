@@ -15,3 +15,4 @@ class AddToBasket():
     PRODUCT_NAME = (By.CSS_SELECTOR, ".product_main> h1")
     PRODUCT_PRICE = (By.CSS_SELECTOR, ".product_main> p")
     CHECK_NAME = (By.CSS_SELECTOR, ".alertinner > strong")
+    CHECK_MASSAGE = (By.CSS_SELECTOR, "#messages .alert")

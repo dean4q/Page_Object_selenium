@@ -42,3 +42,10 @@ class ProductPage(BasePage):
         name = self.browser.find_element(*AddToBasket.CHECK_NAME)
         alert_name = name.text
         return alert_name
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*AddToBasket.CHECK_MASSAGE), "Success message is presented, but should not be"
+
+    def should_dissapear_of_success_message(self):
+        time.sleep(4)
+        assert self.is_not_element_present(*AddToBasket.CHECK_MASSAGE), "Success message is presented, but should not be"
