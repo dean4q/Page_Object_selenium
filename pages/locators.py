@@ -2,7 +2,9 @@ from selenium.webdriver.common.by import By
 
 
 class MainPageLocators():
+    LANGUAGE = (By.CSS_SELECTOR, "")
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    GO_TO_BASKET_LINK = (By.XPATH, "/html/body/header/div/div/div[2]/span/a")
 
 
 class LoginPageLocators():
@@ -16,6 +18,8 @@ class AddToBasket():
     PRODUCT_PRICE = (By.CSS_SELECTOR, ".product_main> p")
     CHECK_NAME = (By.CSS_SELECTOR, ".alertinner > strong")
     CHECK_MASSAGE = (By.CSS_SELECTOR, "#messages .alert")
+    ASSERT_EMPTY_BASKET = (By.CSS_SELECTOR, "#content_inner > p")
+    BASKET_ITEMS = (By.CLASS_NAME, "basket-items")
 
 class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")

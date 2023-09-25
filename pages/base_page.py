@@ -1,5 +1,8 @@
 from telnetlib import EC
-from .locators import BasePageLocators
+
+from selenium import webdriver
+
+from .locators import *
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
@@ -55,3 +58,14 @@ class BasePage():
 
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+
+    def go_to_basket(self):
+        link = self.browser.find_element(*MainPageLocators.GO_TO_BASKET_LINK)
+        link.click()
+
+    def get_lang_from_script_page(self):
+        driver = webdriver.Chrome()
+        driver.get("http://selenium1py.pythonanywhere.com/en-gb/")
+
+        lang = driver.execute_script("return document.documentElement.lang;")
+        return lang
