@@ -16,3 +16,7 @@ class AddToBasket():
     PRODUCT_PRICE = (By.CSS_SELECTOR, ".product_main> p")
     CHECK_NAME = (By.CSS_SELECTOR, ".alertinner > strong")
     CHECK_MASSAGE = (By.CSS_SELECTOR, "#messages .alert")
+
+class BasePageLocators():
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
