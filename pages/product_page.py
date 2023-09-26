@@ -1,7 +1,5 @@
 import time
-from telnetlib import EC
 
-from selenium.webdriver.support.wait import WebDriverWait
 
 from .base_page import BasePage
 from .locators import AddToBasket

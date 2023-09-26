@@ -1,5 +1,6 @@
 from telnetlib import EC
 
+
 from selenium import webdriver
 
 from .locators import *
@@ -7,6 +8,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
 
 class BasePage():
 
@@ -69,3 +71,8 @@ class BasePage():
 
         lang = driver.execute_script("return document.documentElement.lang;")
         return lang
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                 " probably unauthorised user"
+
